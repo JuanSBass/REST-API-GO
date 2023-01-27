@@ -21,5 +21,10 @@ func main() {
 	r := mux.NewRouter()
 	r.HandleFunc("/", routes.HomeHandler)
 
+	r.HandleFunc("/categories", routes.GetCategories).Methods(("GET"))
+	r.HandleFunc("/categories", routes.PostCategory).Methods(("POST"))
+	r.HandleFunc("/product/{id}", routes.GetProduct).Methods(("GET"))
+	r.HandleFunc("/products", routes.GetProducts).Methods(("GET"))
+
 	http.ListenAndServe(":3000", r)
 }
