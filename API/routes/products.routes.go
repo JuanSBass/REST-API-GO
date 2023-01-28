@@ -26,7 +26,7 @@ func GetProductsPerCategory(w http.ResponseWriter, r *http.Request) {
 
 	db.DB.Where("categoryId = ?", params["categoryId"]).Find(&product)
 
-	// if product.categoryId == 0 {
+	// if product[] == 0 {
 	// 	w.WriteHeader(http.StatusNotFound)
 	// 	w.Write([]byte("el producto no existe"))
 	// 	return
