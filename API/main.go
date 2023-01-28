@@ -18,6 +18,8 @@ func main() {
 	db.DB.AutoMigrate(models.Product{})
 	db.DB.AutoMigrate(models.Category{})
 
+	
+
 	r := mux.NewRouter()
 	r.HandleFunc("/", routes.HomeHandler)
 
@@ -25,6 +27,7 @@ func main() {
 	r.HandleFunc("/categories", routes.PostCategory).Methods(("POST"))
 	r.HandleFunc("/product/{id}", routes.GetProduct).Methods(("GET"))
 	r.HandleFunc("/products", routes.GetProducts).Methods(("GET"))
+	r.HandleFunc("/products", routes.PostProduct).Methods(("POST"))
 
 	http.ListenAndServe(":3000", r)
 }
