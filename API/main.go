@@ -25,7 +25,9 @@ func main() {
 
 	r.HandleFunc("/categories", routes.GetCategories).Methods(("GET"))
 	r.HandleFunc("/categories", routes.PostCategory).Methods(("POST"))
-	r.HandleFunc("/product/{id}", routes.GetProduct).Methods(("GET"))
+
+	//? Products Routes
+	r.HandleFunc("/products/{categoryId}", routes.GetProductsPerCategory).Methods(("GET"))
 	r.HandleFunc("/products", routes.GetProducts).Methods(("GET"))
 	r.HandleFunc("/products", routes.PostProduct).Methods(("POST"))
 

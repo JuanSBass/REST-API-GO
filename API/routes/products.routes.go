@@ -2,10 +2,12 @@ package routes
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/http"
 
 	"github.com/JuanSBass/REST-API-GO/db"
 	"github.com/JuanSBass/REST-API-GO/routes/models"
+	"github.com/gorilla/mux"
 )
 
 func GetProducts(w http.ResponseWriter, r *http.Request) {
@@ -16,8 +18,21 @@ func GetProducts(w http.ResponseWriter, r *http.Request) {
 
 }
 
-func GetProduct(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("GetProduct"))
+func GetProductsPerCategory(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	var product []models.Product
+
+	fmt.Print(params)
+
+	db.DB.Where("categoryId = ?", params["categoryId"]).Find(&product)
+
+	// if product.categoryId == 0 {
+	// 	w.WriteHeader(http.StatusNotFound)
+	// 	w.Write([]byte("el producto no existe"))
+	// 	return
+	// }
+
+	json.NewEncoder(w).Encode((&product))
 }
 
 func PostProduct(w http.ResponseWriter, r *http.Request) {
@@ -30,7 +45,16 @@ func PostProduct(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
 		w.Write([]byte(err.Error()))
+		return
 	}
 
 	json.NewEncoder(w).Encode((&product))
 }
+
+
+// func GetProductPerCategory(w http.ResponseWriter, r *http.Request){
+// 	var product models.Product
+
+// 	req := mux.Vars(r)
+// 	json.NewEncoder(w).Encode(&req)
+// }
