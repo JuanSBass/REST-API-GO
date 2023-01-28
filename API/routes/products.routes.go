@@ -19,6 +19,7 @@ func GetProducts(w http.ResponseWriter, r *http.Request) {
 }
 
 func GetProductsPerCategory(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Access-Control-Allow-Origin", "http://localhost:8080") //? Da acceso al cliente
 	params := mux.Vars(r)
 	var product []models.Product
 
@@ -36,6 +37,7 @@ func GetProductsPerCategory(w http.ResponseWriter, r *http.Request) {
 }
 
 func PostProduct(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Access-Control-Allow-Origin", "http://localhost:8080")
 	var product models.Product
 
 	json.NewDecoder(r.Body).Decode(&product)

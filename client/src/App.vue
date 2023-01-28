@@ -1,6 +1,6 @@
 <template>
   <v-card
-    class="mx-auto overflow-hidden"
+    class="mx-auto overflow-hidden justify-center"
     width="1200"
   >
     <!-- <v-system-bar color="deep-purple darken-3"></v-system-bar> -->
@@ -60,9 +60,13 @@
 <script>
 import Footer from "./components/Footer.vue";
 import Products from "./components/Products.vue";
+import axios from "axios";
 
 export default {
   name: 'App',
+  mounted(){
+    this.getCategories()
+  },
 
   components: {
     Footer,
@@ -70,8 +74,39 @@ export default {
   },
 
   data: () => ({
+    
     icons: ["home", "shoping", "email"],
     drawer: false
   }),
+
+  methods: {
+    getProducts: async () => {
+      try {
+        let response = await (await axios.get("http://localhost:3000/products")).data
+      console.log(response);
+      } catch (error) {
+        console.log(error);
+      }
+      
+    },
+    getCategories: async () => {
+      try {
+        let response = await (await axios.get("http://localhost:3000/categories")).data
+      console.log(response); 
+      } catch (error) {
+        console.log(error);
+      }
+    
+    },
+    getProductsPerCategory: async (categoId) => {
+      try {
+        let response = await (await axios.get(`http://localhost:3000/products/${categoId}`)).data
+      console.log(response);
+      } catch (error) {
+        console.log(error);
+      }
+      
+    }, 
+  }
 };
 </script>

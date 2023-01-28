@@ -8,8 +8,10 @@ import (
 	"github.com/JuanSBass/REST-API-GO/routes/models"
 )
 
-func GetCategories(w http.ResponseWriter, r *http.Request) {
 
+
+func GetCategories(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Access-Control-Allow-Origin", "http://localhost:8080")
 	var categories []models.Category
 	db.DB.Find(&categories)
 	json.NewEncoder(w).Encode(&categories)
@@ -19,6 +21,7 @@ func GetCategories(w http.ResponseWriter, r *http.Request) {
 
 
 func PostCategory(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Access-Control-Allow-Origin", "http://localhost:8080")
 	var category models.Category
 
 	json.NewDecoder(r.Body).Decode(&category)
