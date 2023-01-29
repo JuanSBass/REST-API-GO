@@ -35,17 +35,6 @@
 
 export default {
     name: "Products",
-    mounted(){
-      // this.getProducts()
-    },
-    methods: {
-    //   getProducts (){
-    //   axios.get("http://localhost:3000/products")
-    //   .then(res => res.data)
-    //   .then(data => {this.products = data; console.log("products", this.products);})
-
-    // },
-    },
     props: {
     foodName: {
       type: String,
@@ -64,10 +53,5 @@ export default {
       overlay: false,
       products: null,
     }),
-    computed: {
-      imageSrc(){
-        return this.$props.foodImage;
-      }
-    }
   }
 </script>

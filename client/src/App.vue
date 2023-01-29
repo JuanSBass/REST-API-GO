@@ -2,8 +2,8 @@
   <v-card
     class="mx-auto overflow-hidden"
     width="1200"
+    style="margin: 0 auto;"
   >
-    <!-- <v-system-bar color="deep-purple darken-3"></v-system-bar> -->
 
     <v-app-bar
       color="deep-purple accent-4"
@@ -43,22 +43,30 @@
           
           v-for="category in categories"
           :key="category.ID"
+          @click="getProductsPerCategory(category.ID, category.categoName)"
           >
-            <v-list-item-title 
+            <v-list-item-title>
             
-            >{{ category.categoName }}</v-list-item-title>
+            {{ category.categoName }}</v-list-item-title>
           </v-list-item>
+          <v-list-item @click="getProducts()"><v-list-item-title>All food</v-list-item-title></v-list-item>
+          
+          
 
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
 
     <v-card-text>
-      The navigation drawer will appear from the bottom on smaller size screens.
+      {{ renderCatego }}
+      
     </v-card-text>
-    <v-container v-for="product in products" :key="product.ID">
-      <Products  :food-image="product.img" :food-price="product.price" :food-name="product.name"/>
-    </v-container>
+    <div style="display: flex; flex-wrap: wrap; align-items: center;">
+      <v-flex v-for="product in products" :key="product.ID" >
+        <Products  :food-image="product.img" :food-price="product.price" :food-name="product.name"/>
+      </v-flex>
+    </div>
+    
     <Footer/>
   </v-card>
 
@@ -86,15 +94,17 @@ export default {
     drawer: false,
     products: null,
     categories: null,
+    renderCatego: "Enjoy the menu!",
     icons: ["home", "shoping", "email"],
+    
   }),
 
   methods: {
     getProducts (){
       axios.get("http://localhost:3000/products")
       .then(res => res.data)
-      .then(data => {this.products = data; console.log("products", this.products);})
-
+      .then(data => this.products = data)
+      this.renderCatego = "Enjoy the menu!"
     },
 
     getCategories(){
@@ -104,10 +114,11 @@ export default {
 
     },
 
-    getProductsPerCategory (categoId){
+    getProductsPerCategory (categoId, categoName){
       axios.get(`http://localhost:3000/products/${categoId}`)
       .then(res => res.data)
       .then(data => this.products = data)
+      this.renderCatego = `${categoName} food.`
     }, 
   }
 };
