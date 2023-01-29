@@ -1,17 +1,18 @@
 <template>
   <v-hover>
     <template v-slot:default="{ hover }">
+      <v-container >
       <v-card
         class="mx-auto"
         max-width="344"
       >
-        <v-img src="https://cdn.vuetifyjs.com/images/cards/forest-art.jpg"></v-img>
+        <v-img :src="`${$props.foodImage}`" ></v-img>
 
         <v-card-text>
           <h2 class="text-h6 primary--text">
-            Magento Forests
+            ${{ $props.foodPrice }}
           </h2>
-          Travel to the best outdoor experience on planet Earth. A vacation you will never forget!
+          {{ foodName }}
         </v-card-text>
 
         <v-fade-transition>
@@ -23,17 +24,50 @@
             <v-btn>See more info</v-btn>
           </v-overlay>
         </v-fade-transition>
-      </v-card>
+      </v-card></v-container>
     </template>
   </v-hover>
 </template>
 
 <script>
+// import axios from 'axios';
+
 
 export default {
     name: "Products",
+    mounted(){
+      // this.getProducts()
+    },
+    methods: {
+    //   getProducts (){
+    //   axios.get("http://localhost:3000/products")
+    //   .then(res => res.data)
+    //   .then(data => {this.products = data; console.log("products", this.products);})
+
+    // },
+    },
+    props: {
+    foodName: {
+      type: String,
+      default: ""
+    },
+    foodPrice: {
+      type: Number,
+      default: 0
+    },
+    foodImage: {
+      type: String,
+      default: "https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif"
+    }
+  },
     data: () => ({
       overlay: false,
+      products: null,
     }),
+    computed: {
+      imageSrc(){
+        return this.$props.foodImage;
+      }
+    }
   }
 </script>

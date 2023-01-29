@@ -39,8 +39,14 @@
           v-model="group"
           active-class="deep-purple--text text--accent-4"
         >
-          <v-list-item>
-            <v-list-item-title>Foo</v-list-item-title>
+          <v-list-item
+          
+          v-for="category in categories"
+          :key="category.ID"
+          >
+            <v-list-item-title 
+            
+            >{{ category.categoName }}</v-list-item-title>
           </v-list-item>
 
         </v-list-item-group>
@@ -50,7 +56,9 @@
     <v-card-text>
       The navigation drawer will appear from the bottom on smaller size screens.
     </v-card-text>
-    <Products />
+    <v-container v-for="product in products" :key="product.ID">
+      <Products  :food-image="product.img" :food-price="product.price" :food-name="product.name"/>
+    </v-container>
     <Footer/>
   </v-card>
 
@@ -65,6 +73,7 @@ import axios from "axios";
 export default {
   name: 'App',
   mounted(){
+    this.getCategories()
     this.getProducts()
   },
 
@@ -76,7 +85,7 @@ export default {
   data: () => ({
     drawer: false,
     products: null,
-    cateogries: null,
+    categories: null,
     icons: ["home", "shoping", "email"],
   }),
 
@@ -84,14 +93,14 @@ export default {
     getProducts (){
       axios.get("http://localhost:3000/products")
       .then(res => res.data)
-      .then(data => this.products = data)
+      .then(data => {this.products = data; console.log("products", this.products);})
 
     },
 
     getCategories(){
       axios.get("http://localhost:3000/categories")
       .then(res => res.data)
-      .then(data => this.cateogries = data)
+      .then(data => this.categories = data)
 
     },
 
@@ -102,4 +111,5 @@ export default {
     }, 
   }
 };
+
 </script>
