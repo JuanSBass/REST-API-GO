@@ -1,0 +1,71 @@
+
+Categorias:
+
+{
+"categoName": "Vegetarian"
+},
+
+{
+"categoName": "Vegan"
+},
+
+{
+"categoName": "Fast food"
+},
+
+{
+"categoName": "Snack"
+},
+
+{
+"categoName": "American"
+},
+
+{
+"categoName": "Chinese"
+}
+
+
+Products:
+
+{
+"name": "Hot Dog",
+"price": 35,
+"img": "https://th.bing.com/th/id/OIP.dgIb8DNI04jDDWLo-XGpAwHaE8?pid=ImgDet&rs=1",
+"categoryId": 3
+},
+
+{
+"name": "Cauliflower, Brown Rice, and Vegetable Fried Rice",
+"price": 22,
+"img": "https://spoonacular.com/recipeImages/716426-312x231.jpg",
+"categoryId": 6
+},
+
+{
+"name": "Homemade Garlic and Basil French Fries",
+"price": 22,
+"img": "https://spoonacular.com/recipeImages/715594-312x231.jpg",
+"categoryId": 5
+},
+
+{
+"name": "Berry Banana Breakfast Smoothie",
+"price": 52,
+"img": "https://spoonacular.com/recipeImages/715497-312x231.jpg",
+"categoryId": 1
+},
+
+{
+"name": "Garlicky Kale",
+"price": 44,
+"img": "https://spoonacular.com/recipeImages/644387-312x231.jpg",
+"categoryId": 2
+},
+
+{
+"name": "Nachos",
+"price": 50,
+"img": "https://th.bing.com/th/id/R.735915cfe454084458ebcb3d91f728ec?rik=YqfFYC6ND7lEew&pid=ImgRaw&r=0",
+"categoryId": 4
+}

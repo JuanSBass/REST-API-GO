@@ -60,4 +60,6 @@ Para alojar el cliente de forma local usaremos
 npm run serve
 ```
 
+Adjunto un archivo Data.txt donde pordrá copiar categorias y productos para crear la base de datos.
+
 ## Gracias por probar mi app :)

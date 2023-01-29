@@ -15,7 +15,7 @@
     >
 
     <div class="d-flex align-center mb-6" 
-      style="display: flex; flex-direction: column; align-items: center; background-color: #414141;">
+      style="display: flex; flex-direction: column; align-items: center; background-color: #414141; border-radius: 1rem 1rem 0 0;">
       
       <v-img
       style="display:flex; flex-direction: row-reverse; border-radius: 1rem; margin: 1rem 0"
