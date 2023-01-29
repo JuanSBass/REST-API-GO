@@ -95,7 +95,8 @@ export default {
     products: null,
     categories: null,
     renderCatego: "Enjoy the menu!",
-    icons: ["home", "shoping", "email"],
+    icons: "mdi-",
+    dialog: false,
     
   }),
 
