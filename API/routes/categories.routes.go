@@ -3,12 +3,9 @@ package routes
 import (
 	"encoding/json"
 	"net/http"
-
 	"github.com/JuanSBass/REST-API-GO/db"
 	"github.com/JuanSBass/REST-API-GO/routes/models"
 )
-
-
 
 func GetCategories(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", "http://localhost:8080")
@@ -17,8 +14,6 @@ func GetCategories(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(&categories)
 
 }
-
-
 
 func PostCategory(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", "http://localhost:8080")
@@ -34,6 +29,5 @@ func PostCategory(w http.ResponseWriter, r *http.Request) {
 	}
 
 	json.NewEncoder(w).Encode((&category))
-
 
 }

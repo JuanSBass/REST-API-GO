@@ -14,8 +14,7 @@
       :value="overlay"
     >
 
-    <div class="d-flex align-center mb-6" 
-      style="display: flex; flex-direction: column; align-items: center; background-color: #414141; border-radius: 1rem 1rem 0 0;">
+    <div style="display: flex; flex-direction: column; align-items: center; background-color: #414141; border-radius: 1rem 1rem 0 0;">
       
       <v-img
       style="display:flex; flex-direction: row-reverse; border-radius: 1rem; margin: 1rem 0"
@@ -31,8 +30,9 @@
       <v-icon dark>
         mdi-plus
       </v-icon>
-    </v-btn></v-img>
-<h1> {{ $props.foodName }} </h1>
+      </v-btn></v-img>
+
+      <h1> {{ $props.foodName }} </h1>
         <v-btn
           class="white--text "
           color="teal"
@@ -41,8 +41,6 @@
           <v-icon>{{ icon }}</v-icon>Back
         </v-btn>
 
-      
-
       </div>
     </v-overlay>
   </v-row>
@@ -50,7 +48,9 @@
 
 <script>
   export default {
+    
     name: "Modal",
+
     data: () => ({
       icon: "mdi-arrow-left-bold-box-outline",
       overlay: false,

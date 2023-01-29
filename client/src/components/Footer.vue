@@ -10,9 +10,7 @@
     >
       <v-card-title class="teal">
         <strong class="subheading">Thank's for visit my first Vue2 app!</strong>
-
         <v-spacer></v-spacer>
-
         <v-btn
           v-for="icon in icons"
           :key="icon"

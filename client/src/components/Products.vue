@@ -7,8 +7,6 @@
         max-width="344"
       >
 
-      
-      
       <v-img :src="`${$props.foodImage}`" ></v-img>
       
       <v-card-text>
@@ -28,8 +26,6 @@
           </v-overlay>
         </v-fade-transition>
 
-        
-
       </v-card></v-container>
     </template>
   </v-hover>
@@ -39,7 +35,9 @@
 import Modal from './Modal.vue';
 
 export default {
+  
     name: "Products",
+
     components: {
       Modal
     },
