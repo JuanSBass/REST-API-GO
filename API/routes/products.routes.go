@@ -11,7 +11,7 @@ import (
 )
 
 func GetProducts(w http.ResponseWriter, r *http.Request) {
-
+	w.Header().Set("Access-Control-Allow-Origin", "http://localhost:8080")
 	var products []models.Product
 	db.DB.Find(&products)
 	json.NewEncoder(w).Encode((&products))

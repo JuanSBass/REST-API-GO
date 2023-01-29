@@ -1,6 +1,6 @@
 <template>
   <v-card
-    class="mx-auto overflow-hidden justify-center"
+    class="mx-auto overflow-hidden"
     width="1200"
   >
     <!-- <v-system-bar color="deep-purple darken-3"></v-system-bar> -->
@@ -65,7 +65,7 @@ import axios from "axios";
 export default {
   name: 'App',
   mounted(){
-    this.getCategories()
+    this.getProducts()
   },
 
   components: {
@@ -74,38 +74,31 @@ export default {
   },
 
   data: () => ({
-    
+    drawer: false,
+    products: null,
+    cateogries: null,
     icons: ["home", "shoping", "email"],
-    drawer: false
   }),
 
   methods: {
-    getProducts: async () => {
-      try {
-        let response = await (await axios.get("http://localhost:3000/products")).data
-      console.log(response);
-      } catch (error) {
-        console.log(error);
-      }
-      
+    getProducts (){
+      axios.get("http://localhost:3000/products")
+      .then(res => res.data)
+      .then(data => this.products = data)
+
     },
-    getCategories: async () => {
-      try {
-        let response = await (await axios.get("http://localhost:3000/categories")).data
-      console.log(response); 
-      } catch (error) {
-        console.log(error);
-      }
-    
+
+    getCategories(){
+      axios.get("http://localhost:3000/categories")
+      .then(res => res.data)
+      .then(data => this.cateogries = data)
+
     },
-    getProductsPerCategory: async (categoId) => {
-      try {
-        let response = await (await axios.get(`http://localhost:3000/products/${categoId}`)).data
-      console.log(response);
-      } catch (error) {
-        console.log(error);
-      }
-      
+
+    getProductsPerCategory (categoId){
+      axios.get(`http://localhost:3000/products/${categoId}`)
+      .then(res => res.data)
+      .then(data => this.products = data)
     }, 
   }
 };
